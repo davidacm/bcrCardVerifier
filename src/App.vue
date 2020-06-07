@@ -19,7 +19,8 @@
     </Question>
     <Question title="Puedo generar la clave por mis propios medios y consultarla en esta aplicación">
       <p>¡Claro! En el sitio se ha dispuesto de una herramienta para generar la clave con el algoritmo scrypt por facilidad, pero la clave puede ser generada en otra parte. Introduce el dato requerido en el campo "Clave derivada"</p>
-      <p>Para su facilidad se ha creado una herramienta que funciona offline, preconfigurada con los parámetros necesarios. Accede en este link</p>
+      <p>Para su facilidad se ha creado una herramienta que funciona offline, preconfigurada con los parámetros necesarios. </p>
+      <p><a target="_blank" href="https://htmlpreview.github.io/?https://github.com/davidacm/bcrCardVerifier/blob/master/scryptTool.html">accede en este link</a></p>
       <p>Si utilizará otra herramienta, esta es la información que necesita.</p>
       <p>Salt: "c8m.qp+xv3*rhfUz" (sin las comillas).</p>
       <p>Algoritmo: scrypt, N: 128, r: 8, p: 1.</p>
