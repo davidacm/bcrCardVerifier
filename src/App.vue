@@ -11,6 +11,7 @@
       <p>He ideado un método para poder verificar si un número de tarjeta se encuentra en el listado de tarjetas filtradas, sin necesidad que un número de tarjeta deba ser enviado al servidor que contiene la base de datos.</p>
       <br />
       <p>Aunque el banco de Costa Rica asegura que la información de las tarjetas no ha sido filtrada y si lo fue los datos ya no son relevantes, el hecho de que sus sistemas hayan sido hackeados refleja deficiencias en el sistema general.</p>
+      <br />
       <p>Aunque quisiera creer en el mensaje de tranquilidad que el BCR nos envía, me resulta difícil debido a los múltiples problemas que he tenido al usar su sistema mediante la página web. Lo cual me hace pensar que sí existen deficiencias que podrían ser aprovechadas por hackers.</p>
     </div>
 
@@ -62,7 +63,7 @@
               <br />
               <p>Algoritmo: scrypt, N: 128, r: 8, p: 1.</p>
               <br />
-              <p>El resultado se debe convertir a base64 ya que así se encuentran almacenadas las claves en la base de datos.</p>
+              <br /><p>El resultado se debe convertir a base64 ya que así se encuentran almacenadas las claves en la base de datos.</p>
               <p>Lo ideal es que compare con cualquier cadena de texto origen, de manera que coincidan los resultados generados de la herramienta utilizada y este sitio.</p>
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -90,18 +91,15 @@
       <br />
       <v-divider class="my-3"></v-divider>
       <form>
+        <v-text-field v-model.lazy.trim="card" label="Número de tarjeta"></v-text-field>
         <v-text-field
-          v-model.lazy.trim="card"
           error-messages="*"
-          label="Número de tarjeta"
+          v-model="scryptedCard"
           required
+          autocomplete="off"
+          label="Clave derivada"
         ></v-text-field>
-        <v-text-field v-model="scryptedCard" required autocomplete="off" label="Clave derivada"></v-text-field>
-        <v-btn
-          color="red lighten-2"
-          :disabled="scryptedCard==''"
-          @click="checkKey"
-        >Verificar clave derivada de la tarjeta</v-btn>
+        <v-btn :disabled="scryptedCard==''" @click="checkKey">Verificar clave derivada de la tarjeta</v-btn>
       </form>
     </div>
 
@@ -171,7 +169,7 @@ export default {
       scryptedCard: "",
       checkedKey: "",
       result: false,
-      cachedKeys: {},
+      cachedKeys: {}
     };
   },
   methods: {
